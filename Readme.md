@@ -1,5 +1,19 @@
 # Étude sur l’analyse d’images pour la réalisation d’inventaires de biodiversité
 
+## Installation
+Pour avoir la même version de python que moi vous pouvez utiliser anaconda pour génerer les versions des packages. 
+```
+conda env create -f environment.yml
+```
+ou ci-dessous pour modifier le nom par défaut.
+```
+conda env create -f environment.yml --name [nom de l'environement]
+```
+Et la commande pour activer l'environement: 
+```
+conda activate [nom de l'environement]
+```
+
 ## Contexte
 Dans le cadre d’un projet d’étude de la dynamique de recolonisation de parcelles laissées en friche, on souhaite étudier la faisabilité de faire un suivi de l’évolution de la faune et de la flore à l’aide de drones. Pour cela nous aurions besoin de différentes méthodes de vision par ordinateur, d’analyses d’image et de reconnaissance.
 
