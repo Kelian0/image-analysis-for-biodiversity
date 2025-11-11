@@ -1,6 +1,8 @@
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudio,visualstudiocode,python,images,video
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudio,visualstudiocode,python,images,video
 
+*WHU-Hi-LongKou.bsq
+*WHU-Hi-LongKou.hdr
 ### Images ###
 # JPEG
 *.jpg
