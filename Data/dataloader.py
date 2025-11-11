@@ -13,8 +13,8 @@ import spectral
 if __name__ == '__main__':
 
     # Specify the path to the ENVI data file and the file with .hdr
-    file = 'Data\WHU-Hi-River\WHU-Hi-River.img'
-    header_file = 'Data\WHU-Hi-River\WHU-Hi-River.hdr'
+    file = 'Data\WHU-Hi-LongKou.bsq'
+    header_file = 'Data\WHU-Hi-LongKou.hdr'
 
     # Open the ENVI image using rasterio
     with rasterio.open(file) as src:
@@ -47,14 +47,13 @@ if __name__ == '__main__':
     zero_shape = (hyperspectral_data[0,:,:].shape[0], hyperspectral_data[0,:,:].shape[1], 3)
     img = np.zeros(zero_shape, np.float32)
 
-    ind1 = 20
-    ind2 = 40
-    ind3 = 60
+    ind3 = wavelengths.index(610.591003)    #RED
+    ind2 = wavelengths.index(555.064026)    #GREEN
+    ind1 = wavelengths.index(464.0)         #BLUE
 
     img[:,:,2] = (hyperspectral_data[ind1,:,:] - hyperspectral_data[ind1,:,:].min()) / (hyperspectral_data[ind1,:,:].max() - hyperspectral_data[ind1,:,:].min())
     img[:,:,1] = (hyperspectral_data[ind2,:,:] - hyperspectral_data[ind2,:,:].min()) / (hyperspectral_data[ind2,:,:].max() - hyperspectral_data[ind2,:,:].min())
     img[:,:,0] = (hyperspectral_data[ind3,:,:] - hyperspectral_data[ind3,:,:].min()) / (hyperspectral_data[ind3,:,:].max() - hyperspectral_data[ind3,:,:].min())
 
-    print(img)
     plt.imshow(img)
     plt.show()
