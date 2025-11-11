@@ -38,24 +38,23 @@ if __name__ == '__main__':
     # You can now work with the hyperspectral data using NumPy operations
 
     # #Let's show specific wavelengths
-    # ind = wavelengths.index(462.119995)
     plt.imshow(hyperspectral_data[5,:,:])
     plt.show()
 
-    # ind = wavelengths.index(566.909973)
     plt.imshow(hyperspectral_data[90,:,:])
     plt.show()
 
-    # #Let's combine a short, middle and long wavelength
-    # zero_shape = (hyperspectral_data[0,:,:].shape[0], hyperspectral_data[0,:,:].shape[1], 3)
-    # img = np.zeros(zero_shape, np.float32)
+    zero_shape = (hyperspectral_data[0,:,:].shape[0], hyperspectral_data[0,:,:].shape[1], 3)
+    img = np.zeros(zero_shape, np.float32)
 
-    # # ind1 = wavelengths.index(462.119995)
-    # # ind2 = wavelengths.index(566.909973)
-    # # ind3 = wavelengths.index(670.599976)
+    ind1 = 20
+    ind2 = 40
+    ind3 = 60
 
-    # img[:,:,2] = hyperspectral_data[0,:,:]
-    # img[:,:,1] = hyperspectral_data[60,:,:]
-    # img[:,:,0] = hyperspectral_data[120,:,:]
-    # plt.imshow(img)
-    # plt.show()
+    img[:,:,2] = (hyperspectral_data[ind1,:,:] - hyperspectral_data[ind1,:,:].min()) / (hyperspectral_data[ind1,:,:].max() - hyperspectral_data[ind1,:,:].min())
+    img[:,:,1] = (hyperspectral_data[ind2,:,:] - hyperspectral_data[ind2,:,:].min()) / (hyperspectral_data[ind2,:,:].max() - hyperspectral_data[ind2,:,:].min())
+    img[:,:,0] = (hyperspectral_data[ind3,:,:] - hyperspectral_data[ind3,:,:].min()) / (hyperspectral_data[ind3,:,:].max() - hyperspectral_data[ind3,:,:].min())
+
+    print(img)
+    plt.imshow(img)
+    plt.show()
