@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import spectral         # documentation https://www.spectralpython.net/
 
+# https://huggingface.co/datasets/danaroth/whu_hi/tree/main/WHU-Hi-LongKou
+
 class HyperImg:
     def __init__(self,file,header_file):
         self.file = file
@@ -34,7 +36,18 @@ class HyperImg:
         img[:,:,0] = (self.data[ind3,:,:] - self.data[ind3,:,:].min()) / (self.data[ind3,:,:].max() - self.data[ind3,:,:].min())
 
         plt.imshow(img)
+        plt.title('RGB image')
+        plt.axis('off')
         plt.show()
+
+    def show_spectre(self,x,y):
+        plt.plot(self.metadata.bands.centers,self.data[:,x,y])
+        plt.xlabel('Wavelength')
+        plt.ylabel('Reflectance')
+        plt.title('Spectre of pixel ({}, {})'.format(x,y))
+        plt.grid()
+        plt.show()
+
 
 
 
@@ -49,5 +62,5 @@ if __name__ == '__main__':
     hyper_img = HyperImg(file,header_file)
     print(hyper_img.data.shape)
     hyper_img.show_rgb()
-
+    hyper_img.show_spectre(100,100)
     
