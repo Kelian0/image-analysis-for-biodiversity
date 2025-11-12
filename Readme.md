@@ -14,6 +14,14 @@ Et la commande pour activer l'environement:
 conda activate [nom de l'environement]
 ```
 
+Le dataset utilisé pour les premières expériences est disponible en suivant ce lien: https://huggingface.co/datasets/danaroth/whu_hi/tree/main/WHU-Hi-LongKou
+
+``` 
+Déplacer le ici: 
+    Data\WHU-Hi-LongKou\WHU-Hi-LongKou.bsq
+    Data\WHU-Hi-LongKou\WHU-Hi-LongKou.hdr
+```
+
 ## Contexte
 Dans le cadre d’un projet d’étude de la dynamique de recolonisation de parcelles laissées en friche, on souhaite étudier la faisabilité de faire un suivi de l’évolution de la faune et de la flore à l’aide de drones. Pour cela nous aurions besoin de différentes méthodes de vision par ordinateur, d’analyses d’image et de reconnaissance.
 
