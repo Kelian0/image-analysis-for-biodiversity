@@ -17,7 +17,7 @@ conda activate [nom de l'environement]
 Le dataset utilisé pour les premières expériences est disponible en suivant ce lien: https://huggingface.co/datasets/danaroth/whu_hi/tree/main/WHU-Hi-LongKou
 
 ``` 
-Déplacer le ici: 
+Déplacer ici: 
     Data\WHU-Hi-LongKou\WHU-Hi-LongKou.bsq
     Data\WHU-Hi-LongKou\WHU-Hi-LongKou.hdr
 ```
