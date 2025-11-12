@@ -18,15 +18,20 @@ if __name__ == '__main__':
     img_data = img.data.reshape(img.data.shape[0],-1)
     print(img_data.shape)
 
-    #qPerform PCA
+    #Centering the data
+    img_data = img_data - np.mean(img_data, axis=0)
+
+    #Perform PCA
     pca = PCA(n_components=200)
     pca.fit(img_data)
 
     variance_explained = pca.explained_variance_ratio_
     total_explained = 0
-    list_explained = []
-    
-    for i, variance in enumerate(variance_explained):
-        total_explained += variance
-        list_explained.append(total_explained) 
-        print(f'Explained variance for {i+1} components: {total_explained}')
+    scree_plot = np.empty(len(pca.explained_variance_ratio_)+1)
+    scree_plot[0] = 0
+    for i in range(len(pca.explained_variance_ratio_)):
+        scree_plot[i+1] = scree_plot[i] + pca.explained_variance_ratio_[i]
+
+    plt.plot(scree_plot)
+
+    plt.show()
