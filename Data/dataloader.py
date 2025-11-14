@@ -41,11 +41,21 @@ class HyperImg:
         plt.show()
 
     def show_spectre(self,x,y):
-        plt.plot(self.metadata.bands.centers,self.data[:,x,y])
+        plt.plot(self.metadata.bands.centers,self.data[:,y,x])
         plt.xlabel('Wavelength')
         plt.ylabel('Reflectance')
         plt.title('Spectre of pixel ({}, {})'.format(x,y))
         plt.grid()
+        plt.show()
+
+    def show_band(self,band=None,*,wavelength=None):
+        if wavelength is not None:
+            band = np.abs(np.array(self.metadata.bands.centers) - wavelength).argmin()
+        img = plt.imshow(self.data[band,:,:])
+        plt.title('Wavelength {}'.format(self.metadata.bands.centers[band]))
+        plt.axis('off')
+        cbar = plt.colorbar(img)
+        cbar.set_label('Reflectance')
         plt.show()
 
 
@@ -62,5 +72,8 @@ if __name__ == '__main__':
     hyper_img = HyperImg(file,header_file)
     print(hyper_img.data.shape)
     hyper_img.show_rgb()
-    hyper_img.show_spectre(100,100)
+    hyper_img.show_spectre(160,60)
+    hyper_img.show_band(wavelength=550)
+    hyper_img.show_band(wavelength=750)
+
     
